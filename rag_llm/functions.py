@@ -251,6 +251,15 @@ def clean_text(text):
     """
     # Remove repeated pipes (|) or any sequences of pipe characters
     cleaned_text = re.sub(r'\|+', '', text)
+
+    # Remove timestamps or sequences of numbers (like '2021-07-22 17:45:38' or '0.000')
+    cleaned_text = re.sub(r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}|\d+\.\d+', '', cleaned_text)
+
+    # Remove repeated zeroes or sequences of numeric data (e.g., '0.000 0.000')
+    cleaned_text = re.sub(r'0\.000\s+', '', cleaned_text)
+
+    # Remove any excessive spaces or newlines
+    cleaned_text = re.sub(r'\s+', ' ', cleaned_text).strip()
     
     # Optionally, remove any leading/trailing whitespace and redundant newlines
     cleaned_text = cleaned_text.strip()
