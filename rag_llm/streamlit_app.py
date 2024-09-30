@@ -175,6 +175,6 @@ with col1:
                     secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
                 )
                 cleaned_response = clean_text(answer)
-                st.write(answer)
+                st.write(cleaned_response)
             else:
                 st.warning("Please upload a document and ask a question.")
