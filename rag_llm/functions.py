@@ -154,8 +154,9 @@ def create_vectorstore_from_texts(documents):
 # """
 
 PROMPT_TEMPLATE = """
-You are a question-answering assistant. Use the provided context to answer the question concisely and accurately.
-If the context does not provide an answer, say, "The information is not available in the provided context."
+You are an assistant designed to provide concise, clear answers based on the provided context.
+Do not include any extra information, notes, or disclaimers. Only provide the answer to the question asked. 
+If the context doesn't have the answer, say "The information is not available."
 
 {context}
 
@@ -163,8 +164,10 @@ If the context does not provide an answer, say, "The information is not availabl
 
 Question: {question}
 
-Provide a clear and concise answer based on the context above:
+Answer:
 """
+
+
 
 
 # class AnswerWithSources(BaseModel):
