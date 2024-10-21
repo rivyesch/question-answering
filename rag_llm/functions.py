@@ -138,20 +138,34 @@ def create_vectorstore_from_texts(documents):
 #                   collection_name=clean_filename(file_name))
 
 # Prompt template
+# PROMPT_TEMPLATE = """
+# You are an assistant for question-answering tasks.
+# Use the following pieces of retrieved context to answer
+# the question. If you don't know the answer, say that you
+# don't know. DON'T MAKE UP ANYTHING.
+
+# {context}
+
+# ---
+
+# Answer the question based on the above context: {question}
+
+# Answer only the relevant portion of the context, don't include the template.
+# """
+
 PROMPT_TEMPLATE = """
-You are an assistant for question-answering tasks.
-Use the following pieces of retrieved context to answer
-the question. If you don't know the answer, say that you
-don't know. DON'T MAKE UP ANYTHING.
+You are a question-answering assistant. Use the provided context to answer the question concisely and accurately.
+If the context does not provide an answer, say, "The information is not available in the provided context."
 
 {context}
 
 ---
 
-Answer the question based on the above context: {question}
+Question: {question}
 
-Answer only the relevant portion of the context, don't include the template.
+Provide a clear and concise answer based on the context above:
 """
+
 
 # class AnswerWithSources(BaseModel):
 #     """An answer to the question, with sources and reasoning."""
